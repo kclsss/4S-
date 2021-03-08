@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>4S销售管理系统</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
+    <style>
+        .body-text{
+            text-align: center;
+            line-height:580px;
+            font-size: 100px;
+            color: #00FF00;
+            font-family: 宋体;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+
+    <div th:replace="~{commons/commons.html::head}"></div>
+
+    <div th:replace="~{commons/commons.html::sidebar}"></div>
+
+    <div class="layui-body">
+        <form class="layui-form" th:action="@{/updatesale}" method="post">
+
+            <input type="hidden" name="id" th:value="${seller.getId()}">
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">姓名</label>
+                <div class="layui-input-block">
+                    <input type="text" name="name" required th:value="${seller.getName()}"  lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">手机号</label>
+                <div class="layui-input-block">
+                    <input type="text" name="tel" required th:value="${seller.getTel()}"  lay-verify="required" placeholder="请输入手机号" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">住址</label>
+                <div class="layui-input-block">
+                    <input type="text" name="addr" required th:value="${seller.getAddr()}"  lay-verify="required" placeholder="请输入住址" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">性别</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="sex"  value="1" title="男" th:checked="${seller.getSex()==1}">
+                    <input type="radio" name="sex" value="0" title="女" th:checked="${seller.getSex()==0}">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="formDemo">修改</button>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+
+</div>
+<script th:src="@{/layui/layui.all.js}"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.peng.carfours.mapper.ResultMapper">
+
+    <select id="allResult" resultType="map">
+        select SUM(price) as price,s.name
+        FROM carmessage
+                 INNER JOIN seller s on carmessage.seller_id = s.id
+        where s.on_job = 1
+        group by s.id
+    </select>
+
+
+</mapper>

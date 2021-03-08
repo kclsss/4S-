@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>4S销售管理系统</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
+    <style>
+        .body-text{
+            text-align: center;
+            line-height:580px;
+            font-size: 100px;
+            color: #00FF00;
+            font-family: 宋体;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+
+    <div th:replace="~{commons/commons.html::head}"></div>
+
+    <div th:replace="~{commons/commons.html::sidebar}"></div>
+
+    <div class="layui-body">
+        <form class="layui-form" th:action="@{/addMaintenance}" method="post">
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">保养内容</label>
+                <div class="layui-input-block">
+                    <input type="text" name="content"  required  lay-verify="required"  autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">价格</label>
+                <div class="layui-input-block">
+                    <input type="text" name="price" required  lay-verify="required"  autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+
+
+            <label class="layui-form-label">选择车主</label>
+            <div class="layui-form layui-col-md3">
+                <select name="customer_id">
+                    <option th:each="customer:${allCustomer}" th:text="${customer.getName()}" th:value="${customer.getId()}"></option>
+                </select>
+            </div>
+
+
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="formDemo">保养</button>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        © layui.com - 底部固定区域
+    </div>
+</div>
+<script th:src="@{/layui/layui.all.js}"></script>
+</body>
+</html>

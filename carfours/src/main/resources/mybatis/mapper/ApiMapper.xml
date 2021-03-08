@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.peng.carfours.mapper.ApiMapper">
+
+    <select id="CarSell" resultType="map">
+        select name ,count(1) as count
+        from carmessage
+        where state = 1
+        group by name
+    </select>
+
+    <select id="CarMaintain" resultType="map">
+        select content ,count(1) as count
+        from maintain
+        group by content
+    </select>
+
+    <select id="CarSellNum" resultType="int">
+        select count(1) as count
+        from carmessage
+        where state = 1
+
+    </select>
+
+    <select id="AllCae" resultType="int">
+        select count(1)
+        from carmessage
+    </select>
+
+    <select id="sales" resultType="BigDecimal">
+        select sum(price)
+        from carmessage
+        where state = 1
+    </select>
+
+</mapper>

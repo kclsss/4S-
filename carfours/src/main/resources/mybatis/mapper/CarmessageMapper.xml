@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.peng.carfours.mapper.CarmessageMapper">
+
+    <select id="AllCarmessqge" resultType="Carmessage">
+        select  *
+        from carmessage
+    </select>
+
+    <select id="queryById" resultType="Carmessage" parameterType="int">
+        select *
+        from carmessage
+        where id=#{id}
+    </select>
+
+    <insert id="addCarmessqge" parameterType="Carmessage">
+        insert into
+            carmessage (name, color, price)
+            VALUES (#{name},#{color},#{price})
+    </insert>
+
+    <update id="updateCarmessage" parameterType="Carmessage">
+        update carmessage
+        set name=#{name},color=#{color},price=#{price}
+        where id=#{id}
+    </update>
+
+    <delete id="deleteCarmessage" parameterType="int">
+        delete from carmessage
+        where id=#{id}
+    </delete>
+
+</mapper>

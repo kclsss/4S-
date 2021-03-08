@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.peng.carfours.mapper.SellMapper">
+
+    <select id="AllSellcar" resultType="SellCar">
+        SELECT  c.id,c.name,c.color,c.price,c.sell_time,IF(s.`on_job`=0,CONCAT(s.name,'(已离职)'),s.`name`) AS sell_name,cus.name AS customer_name
+        FROM carmessage c
+                 INNER JOIN seller s
+                            ON state = 1 AND c.seller_id = s.id
+                 INNER JOIN customer cus
+                            ON cus.id = c.customer_id
+    </select>
+
+    <select id="queryById" resultType="People" parameterType="int">
+        select *
+        from seller
+        where id=#{id}
+    </select>
+
+    <insert id="addSaleman" parameterType="People">
+        insert into
+            seller (name, tel, addr, sex)
+            VALUES (#{name},#{tel},#{addr},#{sex})
+    </insert>
+
+    <update id="updateSaleman" parameterType="People">
+        update seller
+        set name=#{name},tel=#{tel},addr=#{addr},sex=#{sex}
+        where id=#{id}
+    </update>
+
+    <delete id="deleteSaleman" parameterType="int">
+        delete from seller
+        where id=#{id}
+    </delete>
+
+</mapper>

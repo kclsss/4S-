@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>4S销售管理系统</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+
+    <div th:replace="~{commons/commons.html::head}"></div>
+
+    <div th:replace="~{commons/commons.html::sidebar}"></div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+
+        <a class="layui-btn layui-btn-lg layui-btn-normal layui-btn-radius layui-col-md2" th:href="@{/addSaleman}">添加</a>
+
+        <table class="layui-table page:true">
+            <thead>
+            <tr>
+                <td style="text-align: center">编号</td>
+                <td style="text-align: center">姓名</td>
+                <td style="text-align: center">手机号</td>
+                <td style="text-align: center">住址</td>
+                <td style="text-align: center">性别</td>
+                <td style="text-align: center">操作</td>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="seller:${sellers}">
+                    <td style="text-align: center" th:text="${seller.getId()}"></td>
+                    <td style="text-align: center" th:text="${seller.getName()}"></td>
+                    <td style="text-align: center" th:text="${seller.getTel()}"></td>
+                    <td style="text-align: center" th:text="${seller.getAddr()}"></td>
+                    <td style="text-align: center" th:text="${seller.getSex()==0?'女':'男'}"></td>
+                    <td style="text-align: center">
+                        <a  class="layui-btn layui-btn-sm layui-btn-radius layui-btn-warm" th:href="@{/updatesale/}+${seller.getId()}">编辑</a>
+                        <a  class="layui-btn layui-btn-sm layui-btn-radius layui-btn-danger" th:href="@{/deletesale/}+${seller.getId()}">删除</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+<script th:src="@{/layui/layui.all.js}"></script>
+</body>
+</html>

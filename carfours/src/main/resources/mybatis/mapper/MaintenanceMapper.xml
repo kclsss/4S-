@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.peng.carfours.mapper.MaintenanceMapper">
+
+    <select id="AllMaintain" resultType="Maintain">
+        SELECT  m.id, m.content,m.datetime,cus.name as cus_name,m.price
+        FROM maintain m
+                 INNER JOIN customer cus
+                            ON cus.id = m.customer_id
+
+    </select>
+
+    <insert id="addMaintain" parameterType="Maintain">
+        insert into maintain (content,customer_id,price)
+        values (#{content}, #{customer_id}, #{price})
+    </insert>
+
+
+</mapper>

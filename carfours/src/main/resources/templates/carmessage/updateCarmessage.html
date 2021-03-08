@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>4S销售管理系统</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
+    <style>
+        .body-text{
+            text-align: center;
+            line-height:580px;
+            font-size: 100px;
+            color: #00FF00;
+            font-family: 宋体;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+
+    <div th:replace="~{commons/commons.html::head}"></div>
+
+    <div th:replace="~{commons/commons.html::sidebar}"></div>
+
+    <div class="layui-body">
+        <form class="layui-form" th:action="@{/updateCarmessage}" method="post">
+            <input type="hidden" name="id" th:value="${carmessage.getId()}">
+<!--            <input type="hidden" name="state" th:value="${carmessage.getState()}">
+            <input type="hidden" name="seller_id" th:value="${carmessage.getSeller_id()}">
+            <input type="hidden" name="sell_time" th:value="${carmessage.getSeller_id()}">-->
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">车型</label>
+                <div class="layui-input-block">
+                    <input type="text" name="name" th:value="${carmessage.getName()}" required  lay-verify="required" placeholder="请输入车型" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">颜色</label>
+                <div class="layui-input-block">
+                    <input type="text" name="color" th:value="${carmessage.getColor()}" required  lay-verify="required" placeholder="请输入颜色" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">价格</label>
+                <div class="layui-input-block">
+                    <input type="text" onkeyup="value=value.replace(/[^\d{1,}\.\d{1,}|\d{1,}]/g,'')" name="price" th:value="${carmessage.getPrice()}" required  lay-verify="required" placeholder="请输入价格" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="formDemo">修改</button>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        © layui.com - 底部固定区域
+    </div>
+</div>
+<script th:src="@{/layui/layui.all.js}"></script>
+</body>
+</html>

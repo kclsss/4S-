@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>4S销售管理系统</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+
+    <div th:replace="~{commons/commons.html::head}"></div>
+
+    <div th:replace="~{commons/commons.html::sidebar}"></div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+
+        <a class="layui-btn layui-btn-lg layui-btn-normal layui-btn-radius layui-col-md2" th:href="@{/addMain}">添加</a>
+
+        <table class="layui-table">
+            <thead>
+            <tr>
+                <td style="text-align: center">编号</td>
+                <td style="text-align: center">保养内容</td>
+                <td style="text-align: center">价格</td>
+                <td style="text-align: center">保养时间</td>
+                <td style="text-align: center">车主</td>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="maintenance:${maintenances}">
+                <td style="text-align: center" th:text="${maintenance.getId()}"></td>
+                <td style="text-align: center" th:text="${maintenance.getContent()}"></td>
+                <td style="text-align: center" th:text="${maintenance.getPrice()}"></td>
+                <td style="text-align: center" th:text="${#dates.format(maintenance.getDatetime(),'yyyy/MM/dd HH:mm:ss')}"></td>
+                <td style="text-align: center" th:text="${maintenance.getCus_name()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        © layui.com - 底部固定区域
+    </div>
+</div>
+<script th:src="@{/layui/layui.all.js}"></script>
+</body>
+</html>

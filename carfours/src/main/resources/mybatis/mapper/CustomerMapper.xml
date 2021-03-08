@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.peng.carfours.mapper.CustomerMapper">
+
+    <select id="AllCustomer" resultType="People">
+        select  *
+        from customer
+    </select>
+
+    <select id="queryById" resultType="People" parameterType="int">
+        select *
+        from customer
+        where id=#{id}
+    </select>
+
+    <select id="count" resultType="int">
+        select count(1)
+        from customer
+    </select>
+
+    <insert id="addCustomer" parameterType="People">
+        insert into
+            customer (name, tel, addr, sex)
+            VALUES (#{name},#{tel},#{addr},#{sex})
+    </insert>
+
+    <update id="updateCustomer" parameterType="People">
+        update customer
+        set name=#{name},tel=#{tel},addr=#{addr},sex=#{sex}
+        where id=#{id}
+    </update>
+
+    <delete id="deleteCustomer" parameterType="int">
+        delete from customer
+        where id=#{id}
+    </delete>
+
+</mapper>

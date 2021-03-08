@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <link rel="shortcut icon" href="#" />
+    <title>4S销售管理系统</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/layui/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/layui/css/signin.css}" rel="stylesheet">
+
+    <script th:src="@{/layui/vue.js}"></script>
+
+</head>
+<body class="text-center">
+<form class="form-signin" th:action="@{/login}">
+    <img class="mb-4" th:src="@{/img/carBackground.jpg}" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">请登录</h1>
+
+    <p style="color: red"  id="inin">[[${msg}]]</p>
+
+    <input type="text" name="username" class="form-control" th:placeholder="用户名" required autofocus>
+    <input type="password" name="password" class="form-control" th:placeholder="密码" required>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+</form>
+</body>
+</html>
